@@ -1,0 +1,124 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "reload_style_on_change": true,
+
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "network", "battery", "tray"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}",
+    "show-special": true,
+    "special-visible-only": true
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "icon": true,
+    "icon-size": 16
+  },
+
+  "clock": {
+    "format": " {:%I:%M %p}",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+     "actions":  {
+       "on-click-right": "mode",
+       "on-scroll-up": "tz_up",
+       "on-scroll-down": "tz_down",
+       "on-scroll-up": "shift_up",
+       "on-scroll-down": "shift_down"
+       }
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": " {usage}%"
+  },
+
+  "memory": {
+    "interval": 2,
+    "format": " {used:0.1f}G"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": " {volume}%",
+    "format-muted": " mute",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "pavucontrol"
+  },
+ 
+ "bluetooth": {
+	"format": " {status}",
+  "format-off": "󰂲",
+  "format-disabled": "󰂲",
+	"format-connected": " {device_alias}",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+  "tooltip-format-off": "Click to turn on",
+  "tooltip-format-disabled": "Click to turn on",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+  "on-click": "rfkill toggle bluetooth"
+},
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {essid}",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "⚠ Disconnected",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({frequency}GHz) ({signalStrength}%) \n\n  {bandwidthUpBytes} -  {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "{ifname} \n\n  {bandwidthUpBytes} -  {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+
+  "battery": {
+    "interval": 30,
+    "states": {
+        "warning": 25,
+        "critical": 15
+      },
+    "format": "{capacity}% {icon}",
+    "format-charging": " {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "full-at": 85
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  }
+}
+
